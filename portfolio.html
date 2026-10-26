@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIguel Torres — Portfólio</title>
+
+    <style>
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .stain {
+            position: absolute;
+            scale: 0.6;
+            top: 98%;
+            left: 67%;
+        }
+
+        .stain1 {
+            position: absolute;
+            scale: 0.6;
+            right: 68%;
+            top: 10%;
+        }
+        .hero-conteinar{
+            position: relative;
+            background-color: blue;
+        }
+
+        .stain2 {
+            position: absolute;
+            scale: 1;
+            right: 0;
+            top: -27%;
+            right: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: #e9e7e3;
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+            background: rgba(233, 231, 227, 0.875);
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+        .hero {
+            min-height: 100vh;
+            padding: 130px 0 80px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .small-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(70px, 13vw, 175px);
+            line-height: 0.78;
+            letter-spacing: -8px;
+            text-transform: uppercase;
+            font-weight: 900;
+            max-width: 1000px;
+        }
+
+        .hero-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: end;
+            margin-top: 80px;
+        }
+
+        .hero-description {
+            max-width: 420px;
+            font-size: 14px;
+        }
+
+        .hero-description strong {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            border: 1px solid #111;
+            padding: 11px 18px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #111;
+            color: #e9e7e3;
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================== */
+        section {
+            padding: 120px 0;
+            border-top: 1px solid #111;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 55px;
+            gap: 30px;
+        }
+
+        .section-number {
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: clamp(45px, 8vw, 100px);
+            line-height: 0.85;
+            letter-spacing: -4px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        /* =========================
+           PROJETOS
+        ========================== */
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .project {
+            display: block;
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4 / 4;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: 0.3s;
+        }
+
+        .project:hover .project-image {
+            filter: grayscale(0%);
+            transform: scale(0.98);
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid #111;
+        }
+
+        .project-name {
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
+        .project-description {
+            font-size: 11px;
+            max-width: 260px;
+            text-align: right;
+        }
+
+        /* =========================
+           DIFERENCIAIS
+        ========================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+        }
+
+        .about-intro {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid #111;
+        }
+
+        .skill {
+            padding: 25px 0;
+            border-bottom: 1px solid #111;
+        }
+
+        .skill:nth-child(odd) {
+            padding-right: 30px;
+            border-right: 1px solid #111;
+        }
+
+        .skill:nth-child(even) {
+            padding-left: 30px;
+        }
+
+        .skill-number {
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .skill h3 {
+            margin: 20px 0 8px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .skill p {
+            font-size: 12px;
+            max-width: 300px;
+        }
+
+        /* =========================
+           CONTATO
+        ========================== */
+        .contact {
+            background: #111;
+            color: #e9e7e3;
+            position: relative;
+        }
+
+        .contact .section-title {
+            max-width: 900px;
+        }
+
+        .contact-content {
+            margin-top: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .contact-text {
+            max-width: 420px;
+            font-size: 14px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+        footer {
+            background: #111;
+            color: #e9e7e3;
+            padding: 20px 5%;
+            border-top: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================== */
+        @media (max-width: 700px) {
+            .nav-links {
+                gap: 12px;
+                font-size: 9px;
+            }
+
+            .hero h1 {
+                letter-spacing: -4px;
+            }
+
+            .hero-bottom,
+            .projects,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-links {
+                justify-content: flex-start;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-grid {
+                gap: 45px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .skill:nth-child(odd) {
+                padding-right: 0;
+                border-right: none;
+            }
+
+            .skill:nth-child(even) {
+                padding-left: 0;
+            }
+
+            .contact-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-links {
+                align-items: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <nav>
+        <a href="#inicio" class="logo">MT / 2026</a>
+
+        <ul class="nav-links">
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         INÍCIO
+    ========================== -->
+    <main id="inicio">
+        
+        <section class="hero container">
+            <img class="stain1" src="stain1.png">
+            <div class="hero-content">
+                <span class="small-label">Frontend Dev / Cybersecurity Student</span>
+
+                <h1>
+                    Miguel<br>
+                    Torres
+                </h1>
+            </div>
+
+            <div class="hero-bottom">
+
+                <div class="hero-description">
+                    <strong>01 — Sobre mim</strong>
+
+                    Desenvolvedor em formação, com objetivo em criar
+                    interfaces funcionais e bem estruturadas.
+                    Atualmente estudando Cibersegurança e desenvolvimento
+                    de jogos, enquanto construo projetos próprios para aplicar
+                    minhas habilidades.
+                </div>
+
+                <div class="hero-links">
+                    <a href="#projetos" class="button">Ver projetos</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=migueltoorresbtt@gmail.com&su=Contato%20profissional%20-%20Portfolio&body=Ola!%20Vi%20seu%20portfolio%20e%20gostaria%20de%20entrar%20em%20contato." target="_blank" class="button">Entrar em contato</a>
+                    <a href="https://github.com/miguelzin666" target="_blank" class="button">GitHub ↗</a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             PROJETOS
+        ========================== -->
+        <section id="projetos">
+            <div class="container">
+                <img class="stain" src="stain.png">
+                <div class="section-header">
+                    <span class="section-number">02 / GitHub</span>
+                    <h2 class="section-title">Projetos</h2>
+                </div>
+
+                <div class="projects">
+
+                    <!-- PROJETO 01 -->
+                    <a href="https://github.com/miguelzin666" class="project">
+
+                        <!-- TROQUE ESTA IMAGEM PELA IMAGEM DO SEU PROJETO -->
+                        <img
+                            class="project-image"
+                            src="learningbylistening_example.png"
+                            alt="Imagem do projeto 01"
+                        >
+
+                        <div class="project-info">
+                            <div>
+                                <div class="project-name">Learning by Listening</div>
+                                <small>HTML / CSS / JavaScript / PHP / SQL</small>
+                            </div>
+
+                            <p class="project-description">
+                                Projeto desenvolvido para praticar
+                                bando de dados, organização e interação.
+                            </p>
+                        </div>
+
+                    </a>
+
+
+                    <!-- PROJETO 02 -->
+                    <a href="https://github.com/miguelzin666" class="project">
+
+                        <!-- TROQUE ESTA IMAGEM PELA IMAGEM DO SEU PROJETO -->
+                        <img
+                            class="project-image"
+                            src="cinechaos_example.png"
+                            alt="Imagem do projeto 02"
+                        >
+
+                        <div class="project-info">
+                            <div>
+                                <div class="project-name">Cine Chaos</div>
+                                <small>Ainda em desenvolvimetno...</small>
+                            </div>
+
+                            <p class="project-description">
+                                Aplicação criada para colocar em prática
+                                desenvolvimento web e lógica de programação.
+                            </p>
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             SOBRE / DIFERENCIAIS
+        ========================== -->
+        <section id="sobre">
+            <div class="container">
+
+                <div class="section-header">
+                    <span class="section-number">03 / Perfil</span>
+                    <h2 class="section-title">Por que eu?</h2>
+                </div>
+
+                <div class="about-grid">
+
+                    <p class="about-intro">
+                        Mais do que escrever código,
+                        meu objetivo é entender o problema
+                        e transformar a ideia em algo funcional.
+                    </p>
+
+                    <div class="skills">
+
+                        <div class="skill">
+                            <span class="skill-number">01</span>
+                            <h3>Aprendizado contínuo</h3>
+                            <p>
+                                Estou constantemente estudando novas
+                                tecnologias e colocando o conhecimento
+                                em prática através de projetos.
+                            </p>
+                        </div>
+
+                        <div class="skill">
+                            <span class="skill-number">02</span>
+                            <h3>Projetos reais</h3>
+                            <p>
+                                Prefiro aprender construindo. Cada projeto
+                                serve para testar uma ideia e desenvolver
+                                uma habilidade diferente.
+                            </p>
+                        </div>
+
+                        <div class="skill">
+                            <span class="skill-number">03</span>
+                            <h3>Organização</h3>
+                            <p>
+                                Busco escrever código simples, organizado
+                                e fácil de entender e modificar.
+                            </p>
+                        </div>
+
+                        <div class="skill">
+                            <span class="skill-number">04</span>
+                            <h3>Visão de segurança</h3>
+                            <p>
+                                Também tenho interesse em cybersecurity,
+                                buscando entender como aplicações podem
+                                ser construídas de forma mais segura.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CONTATO
+        ========================== -->
+        <section id="contato" class="contact">
+            <img class="stain2" src="stain2.png">
+            <div class="container">
+
+                <span class="section-number">04 / Contato</span>
+
+                <h2 class="section-title">
+                    Vamos criar<br>
+                    alguma coisa.
+                </h2>
+
+                <div class="contact-content">
+
+                    <p class="contact-text">
+                        Estou aberto a oportunidades profissionais e projetos freelance nas áreas de desenvolvimento front-end e cibersegurança. Entre em contato para discutirmos possíveis projetos e colaborações.
+                    </p>
+
+                    <div class="contact-links">
+                        <!-- TROQUE PELOS SEUS LINKS -->
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=migueltoorresbtt@gmail.com&su=Contato%20profissional%20-%20Portfolio&body=Ola!%20Vi%20seu%20portfolio%20e%20gostaria%20de%20entrar%20em%20contato." target="_blank">
+                            Entre em contato ↗
+                        </a>
+
+                        <a href="https://github.com/miguelzin666" target="_blank">
+                            GitHub ↗
+                        </a>
+
+                        <a href="https://br.linkedin.com/in/miguel-torres-511963371" target="_blank">
+                            LinkedIn ↗
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+    <footer>
+        <p>&copy; <span id="year"></span> <strong><a target="_blank" rel="noopener noreferrer" href="https://br.linkedin.com/in/miguel-torres-511963371">Miguel Torres</a></strong> • Todos os direitos reservados.</p>
+        <span>Built with HTML + CSS + JavaScript</span>
+    </footer>
+
+    <script>
+        const anoAtualizado = new Date().getFullYear();
+        document.getElementById('year').textContent = anoAtualizado;
+    </script>
+</body>
+</html>
